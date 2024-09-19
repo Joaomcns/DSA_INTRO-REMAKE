@@ -1,0 +1,90 @@
+// event_types.h
+#ifndef EVENT_TYPES_H
+#define EVENT_TYPES_H
+
+#define MAX_PEOPLE 4
+#define MAX_STR 64
+
+typedef struct {
+    char name[MAX_STR];
+    int isResponsible;
+} Person;
+
+typedef struct {
+    char description[MAX_STR];
+    char day[9];
+    char start[5];
+    int duration;
+    int finish;
+    int room;
+    int n_participants;
+    Person participants[MAX_PEOPLE];
+} Event;
+
+#endif // EVENT_TYPES_H
+
+// event_utils.h
+#ifndef EVENT_UTILS_H
+#define EVENT_UTILS_H
+
+#include "event_types.h"
+
+void checkParticipants(int structIndex, char* newParticipant, int flag);
+void printEvent(Event e);
+void prettyPrintEvent(Event e);
+int hoursMinutes(char *time);
+int finishTime(int dur, char start_time[5]);
+int compareEventOverlap(Event current, Event comparable);
+Event saveEvent(char *inputs[], int input_count);
+
+#endif // EVENT_UTILS_H
+
+// heap_sort.h
+#ifndef HEAP_SORT_H
+#define HEAP_SORT_H
+
+#include "event_types.h"
+
+int compareDates(const char *date1, const char *date2);
+void swapEvents(Event events[], int i, int j);
+void heapify(Event events[], int n, int i);
+void heapSort(Event events[], int n);
+
+#endif // HEAP_SORT_H
+
+// commands.h
+#ifndef COMMANDS_H
+#define COMMANDS_H
+
+#include "event_types.h"
+
+typedef enum {
+    START,
+    DURATION,
+    ROOM,
+    ADD_PERSON,
+    REMOVE_PERSON
+} UpdateKey;
+
+void updateParticipant(const char *input, UpdateKey flag);
+void updateEvent(const char *input, UpdateKey flag);
+void deleteEvent(const char *input);
+void listEventsByRoom(const char *input);
+void listEvents(void);
+void addEvent(const char *input);
+
+#endif // COMMANDS_H
+
+// main.c
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "event_types.h"
+#include "event_utils.h"
+#include "heap_sort.h"
+#include "commands.h"
+
+int main(void) {
+    // Main function implementation
+}
