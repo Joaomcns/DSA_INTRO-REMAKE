@@ -18,24 +18,23 @@ int compareDates(const char *date1, const char *date2) {
     return day1 - day2;
 }
 
-/* Function to compare two Events based on your criteria*/
+/* Function to compare two Events */
 int compareEventsToSort(Event e1, Event e2) {
     int day_cmp, start_cmp = 0;
 
 
-    /* Compare by day first*/
+    /* Compare by day */
     day_cmp = compareDates(e1.day, e2.day);
     if (day_cmp != 0) {
-        return day_cmp;  /* Return the result of day comparison*/
+        return day_cmp;  
     }
 
     /* Compare by start time if day is the same*/
     start_cmp = strcmp(e1.start, e2.start);
     if (start_cmp != 0) {
-        return start_cmp;  /* Return the result of start time comparison*/
+        return start_cmp; 
     }
 
-    /* Compare by room if both day and start time are the same*/
     return e1.room - e2.room;
 }
 
