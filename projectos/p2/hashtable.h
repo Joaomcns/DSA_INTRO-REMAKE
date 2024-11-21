@@ -7,10 +7,10 @@ typedef struct node {
 }* link;
 
 
-void STinit(int m);
-void STinsert(Contact contact); 
-void STdelete(Contact contact); 
-Contact STsearch(Key v);
+void HTinit(int m);
+void HTinsert(Contact contact); 
+void HTdelete(Contact contact); 
+Contact HTsearch(Key v);
 
 
 

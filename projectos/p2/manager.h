@@ -6,6 +6,8 @@
 #include <stdlib.h>
 
 #include "contact.h"
+#include "hashtable.h"
+#include "list.h"
 
 #define CONTACT_FIELDS 3
 

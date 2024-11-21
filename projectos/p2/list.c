@@ -4,14 +4,21 @@
 #include "list.h"
 
 
-void insertNode(link head, Contact contact){
+
+link createContact(link head,Contact contact){
+    head = (link)malloc(sizeof(struct node));
+    head->contact = contact;
+
+}
+
+void insertBeginList(link head, Contact contact){
     link new = (link)malloc(sizeof(struct node));
     new->contact = contact;
     new->next = head;
     head = new;
 }
 
-void removeNode(link head, Contact contact){
+link removeItemList(link head, Contact contact){
     link t, prev;
     for(t = head, prev = NULL; t != NULL;prev = t, t = t->next) { 
         if(strcmp(t->contact->name, contact->name) == 0) {
@@ -19,9 +26,7 @@ void removeNode(link head, Contact contact){
                 head = t->next;
             else
                 prev->next = t->next;
-            free(t->contact->name);
-            free(t->contact->email);
-            free(t->contact->phoneno);
+            freeContact(t->contact);
             free(t);
         } 
     }
@@ -40,5 +45,11 @@ Contact searchNode(link head, Key v){
 }
 
 link destroyList(link head){
-    
+    link temp;
+    while (head != NULL){
+        temp  = head;
+        head = head->next;
+        free(temp);
+    }
+    return head;
 }

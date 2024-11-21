@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "contact.h"
 
 #define MAX_INPUT_SIZE 1601
 
@@ -38,6 +37,7 @@ int main(void) {
                 // countEmails(input + 2);
                 break;
             case 'x':
+                // freeAll();
                 return EXIT_SUCCESS; /* Termina o programa com sucesso (STDLIB) */
             default:
                 printf("ERRO: Comando desconhecido\n");

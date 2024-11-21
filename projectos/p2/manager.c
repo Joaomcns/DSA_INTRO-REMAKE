@@ -1,7 +1,8 @@
 #include "manager.h"
 #include "utils.h"
 
-
+int n_contacts = 0;
+link listHead  = NULL;
 
 
 /*function to add new contact*/
@@ -22,7 +23,11 @@ void addContact(const char *input){
 
     currentContact = newContact(fields[0], fields[1], fields[2]);
 
-
+    if (!n_contacts){
+        HTinit(n_contacts);
+        // add to data structures
+        return;
+    }
 
     if (checkContact){
         /* add to hashtable
@@ -35,3 +40,4 @@ void addContact(const char *input){
     return;              
 
 }
+
